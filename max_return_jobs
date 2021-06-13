@@ -1,0 +1,94 @@
+# Problem Statement
+# You're a dasher, and you want to try planning out your schedule. You can view a list of deliveries along with their associated start time, end time, and dollar amount for completing the order. Assuming dashers can only deliver one order at a time, \
+# determine the maximum amount of money you can make from the given deliveries.
+
+# The inputs are as follows:
+
+# int start_time: when you plan to start your schedule
+# int end_time: when you plan to end your schedule
+# int d_starts[n]: the start times of each delivery[i]
+# int d_ends[n]: the end times of each delivery[i]
+# int d_pays[n]: the pay for each delivery[i]
+# The output should be an integer representing the maximum amount of money you can make by forming a schedule with the given deliveries.
+
+
+# e.g.
+
+def findMaxReturn(start_time,end_time,d_starts,d_ends,d_pays):
+    num_orders = len(d_starts)
+    max_return = 0
+    
+    for i in range(num_orders): # loop in all orders from start to end
+        current_return = 0 # return for current loop
+        freetime = [(start_time,end_time)] # my freetime
+        for j in range(i,num_orders): # loop in all remaining orders
+            # if i==1 and j ==2:
+            #     print("oc=",occupied)
+            #     print("d_ends=",d_ends[j])
+            for i,(slot_start,slot_end) in enumerate(freetime):
+                if d_ends[j]<=end_time and slot_start<=d_starts[j] and slot_end>=d_ends[j]:
+                    current_return += d_pays[j]
+                    freetime.pop(i)
+                    freetime.append((slot_start,d_starts[j]))
+                    freetime.append((d_ends[j],slot_end))
+                    max_return = max(max_return, current_return)
+    return max_return
+
+
+start_time = 0
+end_time = 10
+d_starts = [2, 3, 5, 7]
+d_ends = [6, 5, 10, 11]
+d_pays = [5, 2, 4, 1]
+
+print(findMaxReturn(start_time,end_time,d_starts,d_ends,d_pays))
+
+
+# start_time = 1
+# end_time = 10
+# d_starts = [2, 5, 8, 2]
+# d_ends = [6, 8, 10, 5]
+# d_pays = [5, 2, 3, 4]
+
+# print(findMaxReturn(start_time,end_time,d_starts,d_ends,d_pays))
+
+# start_time = 1
+# end_time = 10
+# d_starts = [1, 1, 1, 1]
+# d_ends = [8, 10, 3, 4]
+# d_pays = [5, 7, 9, 3]
+
+# print(findMaxReturn(start_time,end_time,d_starts,d_ends,d_pays))
+
+# start_time = 1
+# end_time = 10
+# d_starts = [3, 6, 8, 1]
+# d_ends = [5, 8, 10, 10]
+# d_pays = [2, 2, 2, 7]
+# print(findMaxReturn(start_time,end_time,d_starts,d_ends,d_pays))
+
+
+# start_time = 1
+# end_time = 10
+# d_starts = []
+# d_ends = []
+# d_pays = []
+# print(findMaxReturn(start_time,end_time,d_starts,d_ends,d_pays))
+
+
+# start_time = 1
+# end_time = 10
+# d_starts = [1, 5, 7, 0]
+# d_ends = [11, 15, 12, 3]
+# d_pays = [1, 1, 1, 1]
+# print(findMaxReturn(start_time,end_time,d_starts,d_ends,d_pays))
+
+
+# start_time = 1
+# end_time = 10
+# d_starts = [3, 8, 1, 5]
+# d_ends = [5, 10, 3, 8]
+# d_pays = [1, 2, 3, 4]
+# print(findMaxReturn(start_time,end_time,d_starts,d_ends,d_pays))
+
+
