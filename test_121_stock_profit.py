@@ -17,26 +17,26 @@ Time Complexity: O(n)
 
 from typing import List
 
+
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        if len(prices)<=1:
+        if len(prices) <= 1:
             return 0
-        min_price=prices[0]
-        max_profit=0
-        for i in range(1,len(prices)):
-            #update min_price first
-            min_price = min(prices[i],min_price)
-            max_profit = max(max_profit,prices[i]-min_price)
+        min_price = prices[0]
+        max_profit = 0
+        for i in range(1, len(prices)):
+            # update min_price first
+            min_price = min(prices[i], min_price)
+            max_profit = max(max_profit, prices[i] - min_price)
         return max_profit
 
 
 class TestSolution(unittest.TestCase):
     def test1(self):
-        self.assertEqual(5, Solution().maxProfit([7,1,5,3,6,4]))
+        self.assertEqual(5, Solution().maxProfit([7, 1, 5, 3, 6, 4]))
 
     def test2(self):
         self.assertEqual(0, Solution().maxProfit([7, 6, 4, 3, 1]))
-
 
 
 if __name__ == '__main__':
