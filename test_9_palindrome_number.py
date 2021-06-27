@@ -12,10 +12,26 @@ class Solution:
         if x < 0:
             return False
         str_x = str(x)
-        if str_x == str_x[::-1]:
-            return True
-        else:
-            return False
+        # for loop knowing need n//2 times
+        # n = len(str_x)
+        # for i in range(n//2+1): # compare char by char
+        #     if str_x[i]!=str_x[n-i-1]:
+        #         return False
+        # return True
+        # or two pointer
+        l = 0
+        r = len(str_x)-1
+        while l<r:
+            if str_x[l]!=str_x[r]:
+                return False
+            l+=1
+            r-=1
+        return True
+        # or revert the sequence
+        # if str_x == str_x[::-1]:
+        #     return True
+        # else:
+        #     return False
 
 
 # class Solution:
