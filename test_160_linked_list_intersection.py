@@ -5,6 +5,16 @@ write down thoughts
 set two pointers, traverse in both pointers, when one list is exhausted, set it to traverse on another. In this case,
 both pointers are traversing the whole two linked list (the intersections are traversed exact two times). Therefore, 
 they will either meet at the intersection or null when there is no intersection.
+For example, suppose two intersected lists
+A->B->C->F->G
+   D->E->F->G
+   
+The traversal of the first pointer is
+A->B->C->F->G->D->E->F->G
+Second Pointer is
+D->E->F->G->A->B->C->F->G
+Note that they will meet at the start of the second intersection, by that time, both linked lists almost traversed two 
+times (before start of the intersection)
 """
 
 
