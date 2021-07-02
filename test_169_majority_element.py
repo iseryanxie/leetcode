@@ -32,33 +32,37 @@ from typing import List
 #         nums.sort()
 #         return nums[len(nums)//2]
 
-# class Solution:
-#     def majorityElement(self, nums: List[int]) -> int:
-#         count = {}
-#         n=len(nums)
-#         for num in nums:
-#             if num not in count:
-#                 count[num] = 1
-#                 if count[num] > n/2: # if there is only 1 element
-#                     return num
-#             else:
-#                 count[num] += 1
-#                 if count[num] > n/2: # no need to find the max, just return the case count>n/2
-#                     return num
-
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        candidate = nums[0]
-        counter = 0
+        count = {}
+        n=len(nums)
         for num in nums:
-            if num == candidate:
-                counter += 1
-            else:
-                counter -= 1
-            if counter == 0:
-                counter = 1
-                candidate = num
-        return candidate
+            num_cnt = count.get(num,0) # after get call, it will avoid the key error
+            count[num] = num_cnt + 1
+            if count[num] > n / 2:
+                return num
+            # if num not in count:
+            #     count[num] = 1
+            #     if count[num] > n/2: # if there is only 1 element
+            #         return num
+            # else:
+            #     count[num] += 1
+            #     if count[num] > n/2: # no need to find the max, just return the case count>n/2
+            #         return num
+
+# class Solution:
+#     def majorityElement(self, nums: List[int]) -> int:
+#         candidate = nums[0]
+#         counter = 0
+#         for num in nums:
+#             if num == candidate:
+#                 counter += 1
+#             else:
+#                 counter -= 1
+#             if counter == 0:
+#                 counter = 1
+#                 candidate = num
+#         return candidate
 
 class TestSolution(unittest.TestCase):
     def test1(self):
