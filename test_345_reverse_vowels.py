@@ -3,6 +3,7 @@ import unittest
 """
 write down thoughts
 1. two pointers
+Note: str cannot be directly reversed, must be converted to list first.
 """
 
 
