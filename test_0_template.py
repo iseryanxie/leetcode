@@ -7,12 +7,6 @@ write down thoughts
 
 class Solution(object):
     def template(self, arr, key) -> int:
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        print(2/2)
-        print(2//2)
         return 4
 
 
