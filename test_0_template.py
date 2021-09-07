@@ -3,7 +3,7 @@ import unittest
 """
 write down thoughts
 """
-
+from typing import List
 
 class Solution(object):
     def template(self, arr, key) -> int:
