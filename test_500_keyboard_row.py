@@ -2,8 +2,8 @@ import unittest
 
 """
 write down thoughts
-
-
+find corresponding row, if any letter not match row number, then break the loop and use for..else to catch the break 
+cases.
 """
 from typing import List
 
