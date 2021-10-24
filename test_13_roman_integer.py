@@ -27,8 +27,8 @@ class Solution:
                 sum += num_map[c]
             else:
                 return 0
-            if prev <num_map[c]:
-                sum -= 2*prev
+            if prev < num_map[c]:
+                sum -= 2 * prev
             prev = num_map[c]
         return sum
 
@@ -36,11 +36,12 @@ class Solution:
 class TestSolution(unittest.TestCase):
     def test1(self):
         self.assertEqual(3, Solution().romanToInt("III"))
+
     def test2(self):
         self.assertEqual(4, Solution().romanToInt("IV"))
+
     def test3(self):
         self.assertEqual(1994, Solution().romanToInt("MCMXCIV"))
-
 
 
 if __name__ == '__main__':
